@@ -5,7 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 
 public class MainActivity extends Activity {
@@ -13,12 +16,14 @@ public class MainActivity extends Activity {
     double latitude;
     double longitude;
     String locationAddress;
+    private ImageView mIvShowMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button btn = (Button) findViewById(R.id.btn);
+        mIvShowMap = (ImageView)findViewById(R.id.iv_showMap);
         info = (TextView) findViewById(R.id.text);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +58,10 @@ public class MainActivity extends Activity {
                             "locationAddress: " + locationAddress + "\n" +
                             "locationName: " + locationName;
                     info.setText(str);
+               //     http://api.map.baidu.com/staticimage?center=118.16802%2C24.53552&zoom=19&width=240&height=160&markers=118.16802%2C24.53552&markerStyles=l%2CA
+                    Picasso.with(this).load("http://api.map.baidu.com/staticimage?center=" +longitude + "%2C" + latitude
+                            + "&zoom=19&width=240&height=160&markers=" + longitude + "%2C" + latitude + "&markerStyles=l%2CA&qq-pf-to=pcqq.c2c").
+                            into(mIvShowMap);
                     break;
             }
         }
