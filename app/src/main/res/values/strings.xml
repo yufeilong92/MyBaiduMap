@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MyBaiDuMap</string>
+    <string name="action_settings">Settings</string>
+    <string name="loc">定位</string>
+    <string name="search">搜索</string>
+    <string name="routeplan">路线规划</string>
+    <string name="navi">导航</string>
+
+</resources>
